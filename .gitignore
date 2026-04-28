@@ -1,0 +1,111 @@
+# ---------- Audio data ----------
+# Audio corpora are too large for Git. Use Xeno-canto pulls + BirdCLEF + ML Lab
+# downloads instead. Keep .gitkeep so the data/ folder structure persists.
+data/**
+!data/.gitkeep
+data-cache/
+data-raw/
+data-prepared/
+*.wav
+*.mp3
+*.flac
+*.ogg
+*.opus
+*.aac
+*.m4a
+
+# ---------- ML training artifacts ----------
+ml/models/*
+!ml/models/.gitkeep
+*.tflite
+*.pt
+*.pth
+*.ckpt
+*.h5
+*.pb
+*.onnx
+*.npz
+embeddings/
+checkpoints/
+runs/
+mlruns/
+wandb/
+lightning_logs/
+tensorboard/
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+*.egg
+MANIFEST
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# Jupyter
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+
+# pytest / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# ---------- Android Studio / Gradle / Kotlin ----------
+android/.gradle/
+android/build/
+android/app/build/
+android/.idea/
+android/local.properties
+android/captures/
+android/.externalNativeBuild/
+android/.cxx/
+*.iml
+.gradle/
+build/
+local.properties
+
+# Keystores — never commit
+*.keystore
+*.jks
+*.p12
+
+# ---------- Editor / OS ----------
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------- Secrets ----------
+.env
+.env.local
+.env.*.local
+secrets.yml
+api-keys.txt
+xeno-canto-key.txt
+ebird-key.txt

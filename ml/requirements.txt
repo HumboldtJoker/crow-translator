@@ -1,0 +1,35 @@
+# Core
+numpy>=1.26
+pandas>=2.2
+scipy>=1.13
+scikit-learn>=1.5
+
+# Audio
+librosa>=0.10
+soundfile>=0.12
+
+# Bioacoustic models
+birdnetlib>=0.18              # BirdNET inference
+# perch / perch-hoplite installed from source (see ml/scripts/setup_perch.sh)
+
+# Deep learning (pick one stack — the export script supports both)
+torch>=2.4
+torchaudio>=2.4
+tensorflow>=2.16              # required for TFLite export
+
+# Data sources
+xeno-canto>=0.0.5             # Xeno-canto v3 API wrapper
+requests>=2.32
+
+# Notebooks
+jupyterlab>=4.2
+ipykernel>=6.29
+matplotlib>=3.9
+
+# Calibration & evaluation
+netcal>=1.3                   # temperature scaling, isotonic regression
+
+# Dev / quality
+ruff>=0.6
+black>=24.8
+pytest>=8.3

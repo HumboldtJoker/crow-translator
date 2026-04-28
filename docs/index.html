@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Crowsetta — honest crow call classification for Android</title>
+<meta name="description" content="An open-source Android app and research project that classifies North American crow vocalizations into behaviorally meaningful categories — with rigorous honesty about what call data can and cannot tell us." />
+<meta name="theme-color" content="#0a0d0e" />
+
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=Mona+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a href="#" class="brand" aria-label="Crowsetta home">
+    <svg viewBox="0 0 32 32" class="brand-mark" aria-hidden="true">
+      <path d="M 16 8 C 22 8, 25 14, 24 19 C 23 23, 19 25, 16 25 C 13 25, 9 23, 8 19 C 7 14, 10 8, 16 8 Z M 24 14 L 30 16 L 30 17 L 24 17 Z" fill="currentColor"/>
+      <circle cx="22" cy="13" r="0.9" fill="#c8954a"/>
+    </svg>
+    <span class="brand-name">Crowsetta</span>
+  </a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="#pitch">Premise</a>
+    <a href="#repertoire">Repertoire</a>
+    <a href="#architecture">How it works</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#credits">Sources</a>
+    <a href="https://github.com/HumboldtJoker/crow-translator" class="nav-repo" aria-label="Open source repository">
+      <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      <span>repo</span>
+    </a>
+  </nav>
+</header>
+
+<main id="main">
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <p class="eyebrow">An honest field instrument</p>
+      <h1 class="hero-title">
+        We don't <em>translate</em> crows.<br>
+        <span class="title-emphasis">We listen carefully<br>and tell you what we can.</span>
+      </h1>
+      <p class="hero-sub">
+        Crowsetta is an open-source Android application and research project that
+        classifies North American crow vocalizations into behaviorally meaningful
+        categories — with calibrated confidence, scientific citations, and a
+        deliberate refusal to pretend to know what crows are saying.
+      </p>
+      <div class="hero-actions">
+        <a href="#pitch" class="btn btn-primary">Read the premise</a>
+        <a href="https://github.com/HumboldtJoker/crow-translator" class="btn btn-ghost">View on GitHub →</a>
+      </div>
+      <div class="hero-waveform" aria-hidden="true">
+        <object type="image/svg+xml" data="assets/img/waveform.svg"></object>
+      </div>
+      <p class="hero-caption">
+        <span class="annotation">fig. 1 —</span>
+        spectrogram-style rendering of a six-caw bout, the most common American Crow
+        long-distance vocalization
+      </p>
+    </div>
+
+    <div class="hero-image">
+      <img src="assets/img/crow-perched.svg" alt="Stylized perched American Crow silhouette" />
+      <div class="hero-tag">
+        <span class="hero-tag-binomial"><em>Corvus brachyrhynchos</em></span>
+        <span class="hero-tag-meta">North American · adult · 17″ length · 6 syringeal muscle pairs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== HONEST PITCH ========== -->
+<section class="pitch" id="pitch">
+  <header class="section-head">
+    <span class="section-num">§ 01</span>
+    <h2 class="section-title">The premise, stated honestly</h2>
+    <p class="section-lede">
+      Crow vocalizations are real, structured, and rich with information.
+      They are also not a human language and not yet decoded into one.
+      This project respects both facts.
+    </p>
+  </header>
+
+  <div class="pitch-cols">
+    <article class="pitch-col pitch-yes">
+      <h3 class="pitch-h">What Crowsetta does</h3>
+      <ul class="pitch-list">
+        <li>Detects whether an audio clip contains a North American crow</li>
+        <li>Distinguishes American Crow from Fish Crow within their overlapping range</li>
+        <li>Classifies the call into one of 7 well-attested categories with calibrated confidence</li>
+        <li>Surfaces a plain-English behavioral interpretation grounded in peer-reviewed literature</li>
+        <li>Provides a deeper-dive layer with the spectrogram, all class probabilities, and citations</li>
+        <li>Lets the user record sensor-rich behavioral context when a call is unfamiliar — feeding a research-quality observation log</li>
+      </ul>
+    </article>
+
+    <article class="pitch-col pitch-no">
+      <h3 class="pitch-h">What Crowsetta deliberately does not do</h3>
+      <ul class="pitch-list">
+        <li>Translate crow calls into English sentences</li>
+        <li>Claim that "three caws means danger" or anything of that genre</li>
+        <li>Confidently identify individual crows without controlled enrollment data</li>
+        <li>Decode multi-call sequences as syntactic structure</li>
+        <li>Pretend that pop-science folk-beliefs about crow language are scientifically supported</li>
+        <li>Ship results that are unverifiable, uncalibrated, or unsourced</li>
+      </ul>
+    </article>
+  </div>
+
+  <blockquote class="pull-quote">
+    <p>
+      "Caws encode information on caller sex, identity, and behavioural context
+      — but the same acoustic call type can carry different meanings in different
+      contexts. A clean call→meaning dictionary does not yet exist for the
+      American Crow."
+    </p>
+    <footer>
+      <cite>after Mates, Tarter, Ha, Clark &amp; McGowan (2015), <em>Bioacoustics</em> 24:63–80;
+      and Pendergraft &amp; Marzluff (2019), <em>Animal Behaviour</em> 150:39–57</cite>
+    </footer>
+  </blockquote>
+</section>
+
+
+<!-- ========== REPERTOIRE ========== -->
+<section class="repertoire" id="repertoire">
+  <header class="section-head">
+    <span class="section-num">§ 02</span>
+    <h2 class="section-title">The seven calls we classify</h2>
+    <p class="section-lede">
+      A working taxonomy distilled from the <em>Birds of the World</em> American Crow
+      account (Verbeek et&nbsp;al. 2024), the Fish Crow account (McGowan 2020), and
+      the Pendergraft / Marzluff / Clark research programs. Per-class accuracy varies;
+      common categories are stronger.
+    </p>
+  </header>
+
+  <div class="call-grid">
+
+    <article class="call-card">
+      <div class="call-mini-wave" aria-hidden="true">
+        <svg viewBox="0 0 200 60"><g fill="currentColor">
+          <rect x="20" y="28" width="3" height="4"/><rect x="26" y="22" width="3" height="16"/><rect x="32" y="14" width="3" height="32"/><rect x="38" y="6" width="3" height="48"/><rect x="44" y="2" width="3" height="56"/><rect x="50" y="6" width="3" height="48"/><rect x="56" y="16" width="3" height="28"/><rect x="62" y="26" width="3" height="8"/>
+          <rect x="80" y="26" width="3" height="8"/><rect x="86" y="18" width="3" height="24"/><rect x="92" y="8" width="3" height="44"/><rect x="98" y="2" width="3" height="56"/><rect x="104" y="8" width="3" height="44"/><rect x="110" y="20" width="3" height="20"/>
+          <rect x="130" y="24" width="3" height="12"/><rect x="136" y="14" width="3" height="32"/><rect x="142" y="6" width="3" height="48"/><rect x="148" y="14" width="3" height="32"/><rect x="154" y="26" width="3" height="8"/>
+        </g></svg>
+      </div>
+      <div class="call-num">01</div>
+      <h3 class="call-name">Territorial Caw</h3>
+      <p class="call-binomial"><em>"Long-distance caw"</em> &middot; bouts of 2–5 (range 1–9)</p>
+      <p class="call-desc">
+        The familiar long-distance signal — typically delivered from a perch, repeated in
+        bouts. Functions as territorial advertisement and family-group cohesion. Audible
+        across a roughly 0.5–1.0 km territory.
+      </p>
+      <p class="call-cite">Brown 1985 · Parr 1997 · Thompson 1968</p>
+    </article>
+
+    <article class="call-card alarm">
+      <div class="call-mini-wave" aria-hidden="true">
+        <svg viewBox="0 0 200 60"><g fill="currentColor">
+          <rect x="14" y="14" width="3" height="32"/><rect x="20" y="4" width="3" height="52"/><rect x="26" y="0" width="3" height="60"/><rect x="32" y="2" width="3" height="56"/><rect x="38" y="6" width="3" height="48"/><rect x="44" y="0" width="3" height="60"/><rect x="50" y="2" width="3" height="56"/><rect x="56" y="8" width="3" height="44"/><rect x="62" y="0" width="3" height="60"/><rect x="68" y="4" width="3" height="52"/><rect x="74" y="10" width="3" height="40"/><rect x="80" y="2" width="3" height="56"/><rect x="86" y="0" width="3" height="60"/><rect x="92" y="4" width="3" height="52"/><rect x="98" y="10" width="3" height="40"/><rect x="104" y="2" width="3" height="56"/><rect x="110" y="0" width="3" height="60"/><rect x="116" y="6" width="3" height="48"/><rect x="122" y="2" width="3" height="56"/><rect x="128" y="0" width="3" height="60"/><rect x="134" y="8" width="3" height="44"/><rect x="140" y="2" width="3" height="56"/><rect x="146" y="0" width="3" height="60"/><rect x="152" y="6" width="3" height="48"/><rect x="158" y="14" width="3" height="32"/><rect x="164" y="20" width="3" height="20"/>
+        </g></svg>
+      </div>
+      <div class="call-num">02</div>
+      <h3 class="call-name">Alarm / Mobbing Caw</h3>
+      <p class="call-binomial"><em>"Inflected alarm caw"</em> &middot; rapid &middot; persistent</p>
+      <p class="call-desc">
+        Structurally distinct from the territorial caw. Given when a perceived threat —
+        hawk, owl, cat, unfamiliar person — is detected, often persisting for many
+        minutes and recruiting other crows into a mob.
+      </p>
+      <p class="call-cite">Birds of the World 2024 · Mates et&nbsp;al. 2015</p>
+    </article>
+
+    <article class="call-card">
+      <div class="call-mini-wave" aria-hidden="true">
+        <svg viewBox="0 0 200 60"><g fill="currentColor">
+          <rect x="14" y="22" width="3" height="16"/><rect x="20" y="14" width="3" height="32"/><rect x="26" y="8" width="3" height="44"/><rect x="32" y="4" width="3" height="52"/><rect x="38" y="6" width="3" height="48"/><rect x="44" y="14" width="3" height="32"/><rect x="50" y="24" width="3" height="12"/>
+          <rect x="68" y="20" width="3" height="20"/><rect x="74" y="10" width="3" height="40"/><rect x="80" y="2" width="3" height="56"/><rect x="86" y="0" width="3" height="60"/><rect x="92" y="4" width="3" height="52"/><rect x="98" y="14" width="3" height="32"/><rect x="104" y="22" width="3" height="16"/>
+          <rect x="120" y="26" width="3" height="8"/><rect x="126" y="18" width="3" height="24"/><rect x="132" y="10" width="3" height="40"/><rect x="138" y="6" width="3" height="48"/><rect x="144" y="14" width="3" height="32"/><rect x="150" y="22" width="3" height="16"/>
+          <rect x="166" y="20" width="3" height="20"/><rect x="172" y="14" width="3" height="32"/><rect x="178" y="22" width="3" height="16"/>
+        </g></svg>
+      </div>
+      <div class="call-num">03</div>
+      <h3 class="call-name">Assembly Call</h3>
+      <p class="call-binomial">Recruitment to mob or roost · clustered bouts</p>
+      <p class="call-desc">
+        The recruitment vocalization Richards &amp; Thompson (1978) identified by acoustic
+        manipulation experiments — calls that bring conspecifics in. Closely related
+        functionally to alarm calling but distinguishable in structure.
+      </p>
+      <p class="call-cite">Richards &amp; Thompson 1978 · <em>Behaviour</em> 64:184–203</p>
+    </article>
+
+    <article class="call-card">
+      <div class="call-mini-wave" aria-hidden="true">
+        <svg viewBox="0 0 200 60"><g fill="currentColor">
+          <rect x="14" y="22" width="3" height="16"/><rect x="20" y="16" width="3" height="28"/><rect x="26" y="10" width="3" height="40"/><rect x="32" y="6" width="3" height="48"/><rect x="38" y="2" width="3" height="56"/><rect x="44" y="0" width="3" height="60"/><rect x="50" y="2" width="3" height="56"/><rect x="56" y="6" width="3" height="48"/><rect x="62" y="10" width="3" height="40"/><rect x="68" y="14" width="3" height="32"/><rect x="74" y="20" width="3" height="20"/><rect x="80" y="24" width="3" height="12"/>
+          <rect x="100" y="20" width="3" height="20"/><rect x="106" y="12" width="3" height="36"/><rect x="112" y="6" width="3" height="48"/><rect x="118" y="2" width="3" height="56"/><rect x="124" y="0" width="3" height="60"/><rect x="130" y="4" width="3" height="52"/><rect x="136" y="10" width="3" height="40"/><rect x="142" y="16" width="3" height="28"/><rect x="148" y="22" width="3" height="16"/>
+          <rect x="166" y="24" width="3" height="12"/><rect x="172" y="18" width="3" height="24"/><rect x="178" y="14" width="3" height="32"/>
+        </g></svg>
+      </div>
+      <div class="call-num">04</div>
+      <h3 class="call-name">Scold</h3>
+      <p class="call-binomial">Harsh · sustained · directed</p>
+      <p class="call-desc">
+        Often confused with the alarm caw but typically directed at a specific target
+        (a perched raptor, a predator on the ground, a person near a nest). Tends to
+        persist in shorter, more focused bursts than diffuse alarm calling.
+      </p>
+      <p class="call-cite">Birds of the World 2024 · McGowan corr.</p>
+    </article>
+
+    <article class="call-card">
+      <div class="call-mini-wave" aria-hidden="true">
+        <svg viewBox="0 0 200 60"><g fill="currentColor">
+          <rect x="14" y="20" width="3" height="20"/><rect x="20" y="14" width="3" height="32"/><rect x="26" y="10" width="3" height="40"/><rect x="32" y="14" width="3" height="32"/><rect x="38" y="20" width="3" height="20"/><rect x="44" y="14" width="3" height="32"/><rect x="50" y="10" width="3" height="40"/><rect x="56" y="14" width="3" height="32"/><rect x="62" y="20" width="3" height="20"/><rect x="68" y="14" width="3" height="32"/><rect x="74" y="10" width="3" height="40"/><rect x="80" y="14" width="3" height="32"/><rect x="86" y="20" width="3" height="20"/><rect x="92" y="14" width="3" height="32"/><rect x="98" y="10" width="3" height="40"/><rect x="104" y="14" width="3" height="32"/><rect x="110" y="20" width="3" height="20"/><rect x="116" y="14" width="3" height="32"/><rect x="122" y="10" width="3" height="40"/><rect x="128" y="14" width="3" height="32"/><rect x="134" y="20" width="3" height="20"/><rect x="140" y="14" width="3" height="32"/><rect x="146" y="10" width="3" height="40"/><rect x="152" y="14" width="3" height="32"/><rect x="158" y="20" width="3" height="20"/><rect x="164" y="14" width="3" height="32"/><rect x="170" y="10" width="3" height="40"/><rect x="176" y="14" width="3" height="32"/>
+        </g></svg>
+      </div>
+      <div class="call-num">05</div>
+      <h3 class="call-name">Beg / Juvenile</h3>
+      <p class="call-binomial">Nestling churrs · fledgling chee-aps · wa-eeks</p>
+      <p class="call-desc">
+        A developmental sequence of squeaks, gargling sounds, and "chee-ap" calls from
+        nestling through fledgling stages. Acoustically similar to adult Fish Crow calls
+        — a known false-positive risk for any classifier.
+      </p>
+      <p class="call-cite">Kilham 1989 · Birds of the World 2024</p>
+    </article>
+
+    <article class="call-card">
+      <div class="call-mini-wave" aria-hidden="true">
+        <svg viewBox="0 0 200 60"><g fill="currentColor">
+          <rect x="14" y="20" width="3" height="20"/><rect x="18" y="14" width="3" height="32"/><rect x="22" y="20" width="3" height="20"/><rect x="26" y="14" width="3" height="32"/><rect x="30" y="20" width="3" height="20"/><rect x="34" y="14" width="3" height="32"/><rect x="38" y="20" width="3" height="20"/><rect x="42" y="14" width="3" height="32"/><rect x="46" y="20" width="3" height="20"/><rect x="50" y="14" width="3" height="32"/><rect x="54" y="20" width="3" height="20"/><rect x="58" y="14" width="3" height="32"/><rect x="62" y="20" width="3" height="20"/><rect x="66" y="14" width="3" height="32"/><rect x="70" y="20" width="3" height="20"/><rect x="74" y="14" width="3" height="32"/><rect x="78" y="20" width="3" height="20"/><rect x="82" y="14" width="3" height="32"/><rect x="86" y="20" width="3" height="20"/><rect x="90" y="14" width="3" height="32"/><rect x="94" y="20" width="3" height="20"/><rect x="98" y="14" width="3" height="32"/><rect x="102" y="20" width="3" height="20"/><rect x="106" y="14" width="3" height="32"/><rect x="110" y="20" width="3" height="20"/><rect x="114" y="14" width="3" height="32"/><rect x="118" y="20" width="3" height="20"/><rect x="122" y="14" width="3" height="32"/><rect x="126" y="20" width="3" height="20"/><rect x="130" y="14" width="3" height="32"/><rect x="134" y="20" width="3" height="20"/><rect x="138" y="14" width="3" height="32"/><rect x="142" y="20" width="3" height="20"/><rect x="146" y="14" width="3" height="32"/><rect x="150" y="20" width="3" height="20"/><rect x="154" y="14" width="3" height="32"/><rect x="158" y="20" width="3" height="20"/><rect x="162" y="14" width="3" height="32"/><rect x="166" y="20" width="3" height="20"/><rect x="170" y="14" width="3" height="32"/><rect x="174" y="20" width="3" height="20"/><rect x="178" y="14" width="3" height="32"/>
+        </g></svg>
+      </div>
+      <div class="call-num">06</div>
+      <h3 class="call-name">Rattle / Knock</h3>
+      <p class="call-binomial">Female-associated · courtship &amp; cohesion</p>
+      <p class="call-desc">
+        A distinctive non-caw vocalization — a rapid, mechanical sound roughly described
+        as a wooden rattle. Most often given by females; associated with pair-bonding
+        and family-group contexts. Highly diagnostic when present.
+      </p>
+      <p class="call-cite">Birds of the World 2024 · Marzluff field obs.</p>
+    </article>
+
+    <article class="call-card">
+      <div class="call-mini-wave" aria-hidden="true">
+        <svg viewBox="0 0 200 60"><g fill="currentColor">
+          <rect x="20" y="22" width="3" height="16"/><rect x="26" y="16" width="3" height="28"/><rect x="32" y="22" width="3" height="16"/>
+          <rect x="60" y="22" width="3" height="16"/><rect x="66" y="14" width="3" height="32"/><rect x="72" y="22" width="3" height="16"/>
+          <rect x="100" y="22" width="3" height="16"/><rect x="106" y="16" width="3" height="28"/><rect x="112" y="22" width="3" height="16"/>
+          <rect x="140" y="22" width="3" height="16"/><rect x="146" y="14" width="3" height="32"/><rect x="152" y="22" width="3" height="16"/>
+          <rect x="180" y="22" width="3" height="16"/>
+        </g></svg>
+      </div>
+      <div class="call-num">07</div>
+      <h3 class="call-name">Food / Short Call</h3>
+      <p class="call-binomial">Brief · context-specific · loosely interpretable</p>
+      <p class="call-desc">
+        Pendergraft &amp; Marzluff (2019) showed crows give measurably shorter calls in
+        the presence of food than in its absence. The call carries information that
+        listeners do <em>not</em> respond to in any simple way — a reminder that crow
+        signaling is multidimensional, not lexical.
+      </p>
+      <p class="call-cite">Pendergraft &amp; Marzluff 2019 · Pendergraft et&nbsp;al. 2021</p>
+    </article>
+
+    <article class="call-card subtle">
+      <div class="call-mini-wave" aria-hidden="true">
+        <svg viewBox="0 0 200 60"><g fill="currentColor">
+          <rect x="14" y="28" width="3" height="4" opacity="0.4"/><rect x="20" y="26" width="3" height="8" opacity="0.5"/><rect x="26" y="22" width="3" height="16" opacity="0.6"/><rect x="32" y="20" width="3" height="20" opacity="0.5"/><rect x="38" y="24" width="3" height="12" opacity="0.6"/><rect x="44" y="22" width="3" height="16" opacity="0.5"/><rect x="50" y="26" width="3" height="8" opacity="0.4"/><rect x="56" y="20" width="3" height="20" opacity="0.5"/><rect x="62" y="22" width="3" height="16" opacity="0.6"/><rect x="68" y="26" width="3" height="8" opacity="0.4"/><rect x="74" y="22" width="3" height="16" opacity="0.5"/><rect x="80" y="20" width="3" height="20" opacity="0.5"/><rect x="86" y="24" width="3" height="12" opacity="0.6"/><rect x="92" y="22" width="3" height="16" opacity="0.5"/><rect x="98" y="20" width="3" height="20" opacity="0.5"/><rect x="104" y="22" width="3" height="16" opacity="0.6"/><rect x="110" y="26" width="3" height="8" opacity="0.4"/><rect x="116" y="20" width="3" height="20" opacity="0.5"/><rect x="122" y="22" width="3" height="16" opacity="0.5"/><rect x="128" y="26" width="3" height="8" opacity="0.4"/><rect x="134" y="22" width="3" height="16" opacity="0.5"/><rect x="140" y="20" width="3" height="20" opacity="0.5"/><rect x="146" y="24" width="3" height="12" opacity="0.6"/><rect x="152" y="22" width="3" height="16" opacity="0.5"/><rect x="158" y="26" width="3" height="8" opacity="0.4"/><rect x="164" y="22" width="3" height="16" opacity="0.5"/><rect x="170" y="20" width="3" height="20" opacity="0.5"/><rect x="176" y="24" width="3" height="12" opacity="0.4"/>
+        </g></svg>
+      </div>
+      <div class="call-num">+</div>
+      <h3 class="call-name">Other / Subsong</h3>
+      <p class="call-binomial">A repertoire of 20+ acoustically distinct types remains</p>
+      <p class="call-desc">
+        American Crows have more than twenty distinct call types in addition to the
+        seven above, including a quiet "subsong" of mixed coos, caws, and grating
+        notes given at rest. Most are too rare in public corpora to classify reliably.
+        Crowsetta routes these through the unknown-call observation flow.
+      </p>
+      <p class="call-cite">McGowan · Bird Academy · Verbeek et&nbsp;al. 2024</p>
+    </article>
+
+  </div>
+</section>
+
+
+<!-- ========== ARCHITECTURE ========== -->
+<section class="architecture" id="architecture">
+  <header class="section-head">
+    <span class="section-num">§ 03</span>
+    <h2 class="section-title">How it works</h2>
+    <p class="section-lede">
+      A pretrained bioacoustic embedding model carries the heavy lifting; a small
+      classifier head, trained on hand-labeled crow audio, maps embeddings to call types.
+      All inference runs on-device.
+    </p>
+  </header>
+
+  <div class="arch-flow">
+    <div class="arch-step">
+      <div class="arch-step-num">A</div>
+      <h3>Audio capture</h3>
+      <p><code>AudioRecord</code> · <code>UNPROCESSED</code> source · 48&nbsp;kHz · 16-bit&nbsp;PCM · 3-second window</p>
+    </div>
+    <div class="arch-arrow" aria-hidden="true">→</div>
+    <div class="arch-step">
+      <div class="arch-step-num">B</div>
+      <h3>Embedding</h3>
+      <p>Perch&nbsp;2.0 or BirdNET&nbsp;2.4, frozen, ~12M params, exported to TFLite int8</p>
+    </div>
+    <div class="arch-arrow" aria-hidden="true">→</div>
+    <div class="arch-step">
+      <div class="arch-step-num">C</div>
+      <h3>Classifier head</h3>
+      <p>2-layer MLP · 7 call-type classes · trained on ~1k hand-labeled segments</p>
+    </div>
+    <div class="arch-arrow" aria-hidden="true">→</div>
+    <div class="arch-step">
+      <div class="arch-step-num">D</div>
+      <h3>Calibration &amp; UI</h3>
+      <p>Temperature-scaled probabilities · 5-step confidence display · deeper-dive citations · unknown-call flow</p>
+    </div>
+  </div>
+
+  <div class="arch-note">
+    <p>
+      <strong>Why pretrained embeddings.</strong> Ghani, Denton, Kahl &amp; Klinck (2023) showed that
+      global birdsong embeddings transfer to fine-grained call-type and dialect
+      classification with remarkably small task-specific training sets. We exploit
+      that result. The first model trained from scratch on 1,000 crow segments would
+      learn species ID and not much else; the same 1,000 segments fine-tune a small
+      head on a frozen Perch trunk into a usable call-type classifier.
+    </p>
+  </div>
+</section>
+
+
+<!-- ========== ROADMAP ========== -->
+<section class="roadmap" id="roadmap">
+  <header class="section-head">
+    <span class="section-num">§ 04</span>
+    <h2 class="section-title">Roadmap</h2>
+    <p class="section-lede">A 12–14 week plan with explicit MVP / stretch boundaries.</p>
+  </header>
+
+  <ol class="roadmap-list">
+    <li class="roadmap-item">
+      <div class="roadmap-marker">01</div>
+      <div class="roadmap-body">
+        <h3>Data assembly &amp; baseline classifier <span class="weeks">weeks 1–3</span></h3>
+        <p>
+          Pull amecro / fiscro audio from Xeno-canto v3 and BirdCLEF 2022/2023.
+          Hand-label 500–1,000 segments into the 7-class taxonomy.
+          Train baseline (BirdNET-Analyzer custom head + Perch&nbsp;2.0 + logistic
+          regression). Pick the winner.
+        </p>
+      </div>
+    </li>
+    <li class="roadmap-item">
+      <div class="roadmap-marker">02</div>
+      <div class="roadmap-body">
+        <h3>Model export <span class="weeks">week 4</span></h3>
+        <p>TFLite int8 quantization. Held-out validation including a geographic holdout (East-coast train, West-coast test).</p>
+      </div>
+    </li>
+    <li class="roadmap-item">
+      <div class="roadmap-marker">03</div>
+      <div class="roadmap-body">
+        <h3>Android skeleton <span class="weeks">weeks 5–7</span></h3>
+        <p>Kotlin · Jetpack Compose · TFLite Interpreter. Working "press button → see top-3 with calibrated confidence" loop.</p>
+      </div>
+    </li>
+    <li class="roadmap-item">
+      <div class="roadmap-marker">04</div>
+      <div class="roadmap-body">
+        <h3>Dual-layer UI <span class="weeks">weeks 8–9</span></h3>
+        <p>Consumer surface (one primary card, plain-English interpretation) with a "Deeper Dive" pane (spectrogram, top-5 bars, citations linked to the canonical papers).</p>
+      </div>
+    </li>
+    <li class="roadmap-item">
+      <div class="roadmap-marker">05</div>
+      <div class="roadmap-body">
+        <h3>Behavioral observation capture <span class="weeks">weeks 10–11</span></h3>
+        <p>CameraX, FusedLocationProvider, SensorManager, Open-Meteo. Versioned JSON schema. Local-only by default; opt-in cloud sync stub.</p>
+      </div>
+    </li>
+    <li class="roadmap-item">
+      <div class="roadmap-marker">06</div>
+      <div class="roadmap-body">
+        <h3>Calibration &amp; demo prep <span class="weeks">week 12</span></h3>
+        <p>Confidence threshold tuning on held-out validation. Project report. Demo recordings for live presentation.</p>
+      </div>
+    </li>
+    <li class="roadmap-item stretch">
+      <div class="roadmap-marker">07</div>
+      <div class="roadmap-body">
+        <h3>Stretch — sequence parsing &amp; individual ID <span class="weeks">post-MVP</span></h3>
+        <p>BiGRU over per-caw embeddings for bout-level labels. Contrastive head for "matches your local roost" individual-ID hint. Both research-grade; honest about limitations.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+
+
+<!-- ========== CREDITS ========== -->
+<section class="credits" id="credits">
+  <header class="section-head">
+    <span class="section-num">§ 05</span>
+    <h2 class="section-title">What this is built on</h2>
+    <p class="section-lede">
+      Crowsetta stands on a small mountain of careful prior work. The list below is
+      partial; the <a href="research/PLANNING.md"><code>research/</code></a> directory
+      in the repository carries the full bibliography.
+    </p>
+  </header>
+
+  <div class="credits-grid">
+    <article class="credit-card">
+      <h3>The science</h3>
+      <ul>
+        <li><strong>Verbeek, Caffrey, Clark, McGowan &amp; Pyle</strong> — <em>Birds of the World</em>: American Crow, v1.2 (2024)</li>
+        <li><strong>McGowan, K.&nbsp;J.</strong> — <em>Birds of the World</em>: Fish Crow (2020)</li>
+        <li><strong>Mates, Tarter, Ha, Clark &amp; McGowan</strong> — caws encode sex, identity, behavioural context, <em>Bioacoustics</em> 24 (2015)</li>
+        <li><strong>Pendergraft &amp; Marzluff</strong> — fussing over food, <em>Animal Behaviour</em> 150 (2019)</li>
+        <li><strong>Pendergraft, Marzluff, Cross, Shimizu &amp; Templeton</strong> — FDG-PET corvid brain activity (2021)</li>
+        <li><strong>Richards &amp; Thompson</strong> — assembly call structural properties, <em>Behaviour</em> 64 (1978)</li>
+        <li><strong>Stowell, Morfi &amp; Gill</strong> — corvid individual ID (2018)</li>
+        <li><strong>Kaeli Swift</strong> — <em>corvidresearch.blog</em> (running synthesis of the field)</li>
+      </ul>
+    </article>
+
+    <article class="credit-card">
+      <h3>The audio</h3>
+      <ul>
+        <li><strong>Macaulay Library</strong> — Cornell Lab of Ornithology</li>
+        <li><strong>Xeno-canto</strong> — community-curated, CC-licensed</li>
+        <li><strong>BirdCLEF</strong> — Kahl et&nbsp;al., LifeCLEF (2021–2023)</li>
+        <li><strong>iNaturalist</strong> — supplementary observations</li>
+        <li><strong>FSD50K · AudioSet</strong> — negative-mining and noise robustness</li>
+      </ul>
+    </article>
+
+    <article class="credit-card">
+      <h3>The models</h3>
+      <ul>
+        <li><strong>Perch 2.0</strong> — van Merriënboer, Dumoulin, Hamer, Harrell, Burns &amp; Denton (Google DeepMind, 2025)</li>
+        <li><strong>BirdNET / BirdNET-Lite</strong> — Kahl, Wood, Eibl &amp; Klinck (Cornell K. Lisa Yang Center / Chemnitz)</li>
+        <li><strong>Ghani et&nbsp;al. (2023)</strong> — global birdsong embeddings transfer learning</li>
+        <li><strong>whoBIRD</strong> — open-source Android reference architecture</li>
+      </ul>
+    </article>
+
+    <article class="credit-card">
+      <h3>The infrastructure</h3>
+      <ul>
+        <li><strong>TensorFlow Lite</strong> · on-device inference</li>
+        <li><strong>Jetpack Compose</strong> · Android UI</li>
+        <li><strong>CameraX · FusedLocationProvider · SensorManager</strong> · observation capture</li>
+        <li><strong>Open-Meteo</strong> · weather context (free, no key)</li>
+        <li><strong>Audacity / Raven Lite</strong> · manual labeling</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+
+<!-- ========== HONEST LIMITS ========== -->
+<section class="limits" id="limits">
+  <header class="section-head">
+    <span class="section-num">§ 06</span>
+    <h2 class="section-title">What this cannot do</h2>
+    <p class="section-lede">Stated explicitly so it is harder for anyone, including us, to forget.</p>
+  </header>
+
+  <ul class="limit-list">
+    <li><span class="limit-num">i.</span><span class="limit-text">No public model maps crow calls to human-language meanings. Our outputs are probable behavioral categories, not translations.</span></li>
+    <li><span class="limit-num">ii.</span><span class="limit-text">The same acoustic call type can carry different meanings in different contexts. Mates et&nbsp;al. and Pendergraft &amp; Marzluff established this clearly.</span></li>
+    <li><span class="limit-num">iii.</span><span class="limit-text">Public crow corpora are species-labeled, not call-type-labeled. Performance is bounded by manual labeling effort.</span></li>
+    <li><span class="limit-num">iv.</span><span class="limit-text">Geographic generalization is uneven. Pacific-coast and continental American Crow vocalizations differ; juvenile begging resembles adult Fish Crow.</span></li>
+    <li><span class="limit-num">v.</span><span class="limit-text">Different Android devices have different microphone DSP defaults. The <code>UNPROCESSED</code> audio source mitigates but does not eliminate this.</span></li>
+    <li><span class="limit-num">vi.</span><span class="limit-text">User-supplied behavioral labels in the unknown-call flow are candidate labels. They are not ground truth.</span></li>
+  </ul>
+</section>
+
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <object type="image/svg+xml" data="assets/img/crow-flight.svg" class="footer-flight"></object>
+      <p class="footer-tag">
+        Crowsetta · an open-source class project ·
+        scientifically rigorous, deliberately humble
+      </p>
+    </div>
+    <div class="footer-meta">
+      <p><strong>License</strong> · MIT (code) · CC-BY-NC-SA inherited from BirdNET when bundled</p>
+      <p><strong>Source</strong> · <a href="https://github.com/HumboldtJoker/crow-translator">github.com/HumboldtJoker/crow-translator</a></p>
+      <p><strong>Citations</strong> · The <code>research/</code> directory carries the full bibliography</p>
+      <p class="footer-disclaimer">
+        Not affiliated with Cornell Lab of Ornithology, the Marzluff lab, BirdNET,
+        Google DeepMind, or any of the researchers cited. We just stand on their work.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
