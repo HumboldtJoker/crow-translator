@@ -1,0 +1,76 @@
+cff-version: 1.2.0
+title: "Crowsetta: an honest crow call classifier for Android"
+message: "If you use this software or its taxonomy, please cite as below."
+type: software
+authors:
+  - alias: HumboldtJoker
+    affiliation: Liberation Labs / THCoalition
+abstract: >-
+  Crowsetta is an open-source Android application and research project that
+  classifies North American crow vocalizations into behaviorally meaningful
+  categories using a small classifier head trained on top of frozen
+  bioacoustic embeddings (BirdNET 2.4 or Perch 2.0). It surfaces calibrated
+  confidence and citations to peer-reviewed crow vocalization research,
+  rather than claiming to translate crow calls into human language.
+keywords:
+  - bioacoustics
+  - American Crow
+  - Corvus brachyrhynchos
+  - Fish Crow
+  - Corvus ossifragus
+  - call-type classification
+  - on-device inference
+  - BirdNET
+  - Perch
+  - citizen science
+license: MIT
+repository-code: "https://github.com/HumboldtJoker/crow-translator"
+url: "https://humboldtjoker.github.io/crow-translator/"
+references:
+  - type: article
+    authors:
+      - family-names: Mates
+        given-names: Erin A.
+      - family-names: Tarter
+        given-names: Renee R.
+      - family-names: Ha
+        given-names: James C.
+      - family-names: Clark
+        given-names: Anne B.
+      - family-names: McGowan
+        given-names: Kevin J.
+    title: "Acoustic profiling in a complexly social species, the American crow: caws encode information on caller sex, identity, and behavioural context"
+    journal: Bioacoustics
+    volume: 24
+    issue: 1
+    year: 2015
+    start: 63
+    end: 80
+  - type: article
+    authors:
+      - family-names: Pendergraft
+        given-names: Loma T.
+      - family-names: Marzluff
+        given-names: John M.
+    title: "Fussing over food: factors affecting the vocalizations American crows utter around food"
+    journal: Animal Behaviour
+    volume: 150
+    year: 2019
+    start: 39
+    end: 57
+  - type: report
+    authors:
+      - family-names: Verbeek
+        given-names: N. A. M.
+      - family-names: Caffrey
+        given-names: Carolee
+      - family-names: Clark
+        given-names: Anne B.
+      - family-names: McGowan
+        given-names: Kevin J.
+      - family-names: Pyle
+        given-names: Peter
+    title: "American Crow (Corvus brachyrhynchos), version 1.2"
+    institution:
+      name: Cornell Lab of Ornithology
+    year: 2024
